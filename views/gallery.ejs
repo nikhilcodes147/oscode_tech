@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - OSCode NMIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-black via-[#111827] to-[#1e3a8a] text-white">
+
+    
+    <nav class="bg-[#111827] p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-blue-400">OSCode NMIT</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/" class="hover:text-blue-400 nav-link">Home</a></li>
+                <li><a href="/aboutus" class="hover:text-blue-400 nav-link">About Us</a></li>
+                <li><a href="/team" class="hover:text-blue-400 nav-link">Team</a></li>
+                <li><a href="/blogs" class="hover:text-blue-400 nav-link">Blogs</a></li>
+                <li><a href="/contactus" class="hover:text-blue-400 nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+   
+    <section class="container mx-auto text-center py-16">
+        <h1 class="text-4xl font-bold text-blue-400 mb-8 opacity-0 animate-fade-in">Gallery</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <% for(let i=1; i <=6; i++) { %>
+                <div class="opacity-0 transform translate-y-5 transition duration-700 gallery">
+                    <img src="/images/img<%= i %>.png" alt="Gallery Image <%= i %>"
+                        class="w-full h-60 object-cover rounded-lg shadow-lg hover:scale-110 transition duration-500">
+                </div>
+                <% } %>
+        </div>
+    </section>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const items = document.querySelectorAll(".gallery");
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.remove("opacity-0", "translate-y-5");
+                    item.classList.add("opacity-100", "translate-y-0");
+                }, index * 200);
+            });
+        });
+
+        function addPageTransitions() {
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 800);
+                });
+            });
+        }
+
+        addPageTransitions();
+    </script>
+
+</body>
+
+</html>
