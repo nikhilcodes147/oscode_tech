@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home→ "Welcome to OSCode NMIT – Innovate & Collaborate"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+
+        h1 span {
+            font-size: 3rem;
+            display: inline-block;
+            transition: 0.5s;
+            animation: bounce 0.4s ease infinite alternate;
+            position: relative;
+        }
+
+        h1 span:nth-child(1) { animation-delay: 0s; }
+        h1 span:nth-child(2) { animation-delay: 0.1s; }
+        h1 span:nth-child(3) { animation-delay: 0.2s; }
+        h1 span:nth-child(4) { animation-delay: 0.3s; }
+        h1 span:nth-child(5) { animation-delay: 0.4s; }
+        h1 span:nth-child(6) { animation-delay: 0.5s; }
+        h1 span:nth-child(7) { animation-delay: 0.6s; }
+        h1 span:nth-child(8) { animation-delay: 0.7s; }
+        h1 span:nth-child(9) { animation-delay: 0.8s; }
+        h1 span:nth-child(10) { animation-delay: 0.9s; }
+
+        @keyframes bounce {
+            100% {
+                top: -10px;
+                text-shadow: 0 1px 0 #ccc,
+                             0 2px 0 #ccc,
+                             0 3px 0 #ccc,
+                             0 4px 0 #ccc;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-black via-[#111827] to-[#1e3a8a] text-white fade-in">
+
+    <nav class="bg-[#111827] p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+
+            <div class="flex items-center space-x-3">
+                <img src="/images/logo.png" alt="OSCode Logo" class="h-12 w-12">
+                <a href="/" class="text-xl font-bold text-blue-400">OSCode NMIT</a>
+            </div>
+
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/aboutus" class="hover:text-blue-400 nav-link">About Us</a></li>
+                <li><a href="/team" class="hover:text-blue-400 nav-link">Team</a></li>
+                <li><a href="/gallery" class="hover:text-blue-400 nav-link">Gallery</a></li>
+                <li><a href="/blogs" class="hover:text-blue-400 nav-link">Blogs</a></li>
+                <li><a href="/contactus" class="hover:text-blue-400 nav-link">Contact Us</a></li>
+            </ul>
+
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none text-2xl">☰</button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden flex flex-col bg-[#111827] p-4 space-y-2">
+            <a href="/" class="hover:text-blue-400 nav-link">Home</a>
+            <a href="/aboutus" class="hover:text-blue-400 nav-link">About Us</a>
+            <a href="/team" class="hover:text-blue-400 nav-link">Team</a>
+            <a href="/gallery" class="hover:text-blue-400 nav-link">Gallery</a>
+            <a href="/blogs" class="hover:text-blue-400 nav-link">Blogs</a>
+            <a href="/contactus" class="hover:text-blue-400 nav-link">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="flex flex-col justify-center items-center h-screen text-center">
+        <h1 class="text-6xl font-bold text-blue-400">
+            <span>O</span><span>S</span><span>C</span><span>o</span><span>d</span><span>e</span> 
+            <span>N</span><span>M</span><span>I</span><span>T</span>
+        </h1>
+        <h2 class="text-2xl text-gray-300 mt-2">THE OPEN SOURCE CLUB OF NMIT</h2>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("visible");
+        });
+
+        function addPageTransitions() {
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.body.classList.add("fade-out");
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 800);
+                });
+            });
+        }
+
+        addPageTransitions();
+    </script>
+
+</body>
+</html>

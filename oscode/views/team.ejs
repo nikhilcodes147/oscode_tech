@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team→ "Meet the Team – OSCode NMIT"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    
+    <nav class="bg-[#111827] p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-blue-400">OSCode NMIT</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/" class="hover:text-blue-400 transition duration-300">Home</a></li>
+                <li><a href="/aboutus" class="hover:text-blue-400 transition duration-300">About Us</a></li>
+                <li><a href="/gallery" class="hover:text-blue-400 transition duration-300">Gallery</a></li>
+                <li><a href="/blogs" class="hover:text-blue-400 transition duration-300">Blogs</a></li>
+                <li><a href="/contactus" class="hover:text-blue-400 transition duration-300">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <section class="container mx-auto text-center py-16 fade-in">
+        <h1 class="text-4xl font-bold text-blue-400 mb-8">Meet Our Team</h1>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 place-items-center">
+            
+            <% const teamMembers = [
+                { name: "Yuktha G (LEAD)", image: "/images/mem1.png" },
+                { name: "Priya (CO-LEAD)", image: "/images/mem2.png" },
+                { name: "T PavanTeja", image: "/images/mem3.png" },
+                { name: "Vaishnavi S", image: "/images/mem4.png" },
+                { name: "Rashmika R", image: "/images/mem5.png" },
+                { name: "Moulya M", image: "/images/mem6.png" },
+                { name: "Greeshma", image: "/images/mem7.png" },
+                { name: "Rakshita", image: "/images/mem8.png" }
+            ]; %>
+
+            <% teamMembers.forEach(member => { %>
+                <div class="group relative">
+                    <img src="<%= member.image %>" alt="<%= member.name %>"
+                        class="rounded-lg transition-transform duration-300 transform group-hover:scale-105 group-hover:shadow-xl border border-blue-400 w-64 h-70">
+                    <p class="mt-2 text-lg font-semibold"><%= member.name %></p>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+
+    
+    <script>
+       
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            document.body.style.opacity = "1";
+
+            
+            const fadeElements = document.querySelectorAll(".fade-in");
+            function checkFade() {
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        el.classList.add("visible");
+                    }
+                });
+            }
+            window.addEventListener("scroll", checkFade);
+            checkFade();
+        });
+
+        
+        function addPageTransition(linkSelector, delay = 800) {
+            document.querySelectorAll(linkSelector).forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault(); 
+                    const targetUrl = this.getAttribute("href"); 
+
+                    document.body.style.transition = "opacity 0.5s"; 
+                    document.body.style.opacity = "0"; 
+
+                    setTimeout(() => {
+                        window.location.href = targetUrl; 
+                    }, delay);
+                });
+            });
+        }
+
+        
+        addPageTransition("nav a", 600); 
+    </script>
+
+</body>
+
+</html>

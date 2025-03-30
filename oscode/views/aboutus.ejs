@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us → "About OSCode NMIT – Our Mission & Vision"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-900 {
+            animation-delay: 0.9s;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <nav class="bg-[#111827] p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold text-blue-400 hover:text-blue-300 transition duration-300">OSCode
+                NMIT</a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/" class="hover:text-blue-400 transition duration-300 nav-link">Home</a></li>
+                <li><a href="/team" class="hover:text-blue-400 transition duration-300 nav-link">Team</a></li>
+                <li><a href="/gallery" class="hover:text-blue-400 transition duration-300 nav-link">Gallery</a></li>
+                <li><a href="/blogs" class="hover:text-blue-400 transition duration-300 nav-link">Blogs</a></li>
+                <li><a href="/contactus" class="hover:text-blue-400 transition duration-300 nav-link">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <section class="container mx-auto p-8 text-center">
+        <h1 class="text-5xl font-bold text-blue-400 mb-4 opacity-0 animate-fade-in">About Us</h1>
+        <p class="text-lg text-gray-300 opacity-0 animate-fade-in delay-300">
+            OSCode is a student-led open-source club at NMIT, fostering learning, collaboration, and innovation.
+        </p>
+    </section>
+
+   
+    <section class="container mx-auto p-8 space-y-6">
+        <div class="w-full bg-blue-700 p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl opacity-0 animate-fade-in">
+            <h2 class="text-xl font-bold">Hands-on Learning</h2>
+            <p>Gain practical experience by working on real-world open-source projects.</p>
+        </div>
+        <div class="w-full bg-blue-700 p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl opacity-0 animate-fade-in delay-600">
+            <h2 class="text-xl font-bold">Mentorship by Experts</h2>
+            <p>Learn from experienced open-source contributors and industry leaders.</p>
+        </div>
+        <div class="w-full bg-blue-700 p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl opacity-0 animate-fade-in delay-900">
+            <h2 class="text-xl font-bold">Hackathons & Challenges</h2>
+            <p>Compete in global hackathons and solve real-world problems.</p>
+        </div>
+    </section>
+
+    <script>
+        function addPageTransition() {
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 800);
+                });
+            });
+        }
+
+        addPageTransition();
+    </script>
+
+</body>
+
+</html>
